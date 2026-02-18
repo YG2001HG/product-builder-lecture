@@ -94,6 +94,46 @@
             padding: 1rem;
             border-radius: 5px;
         }
+
+        /* 제휴 문의 폼 스타일 */
+        .contact-section {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 2px solid #ecf0f1;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        .contact-form label {
+            font-weight: bold;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+        .contact-form input, .contact-form textarea {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .contact-form button[type="submit"] {
+            background-color: #2c3e50;
+            margin: 1rem 0 0 0;
+            width: 100%;
+        }
+        .contact-form button[type="submit"]:hover {
+            background-color: #34495e;
+        }
     </style>
 </head>
 <body>
@@ -119,6 +159,37 @@
             <div id="book-list-container">
                 <!-- 읽은 책 목록이 여기에 표시됩니다. -->
             </div>
+
+            <!-- 제휴 및 서비스 문의 섹션 -->
+            <section class="contact-section">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <h2 style="color: #2c3e50; margin-bottom: 0.5rem;">🤝 제휴 및 서비스 문의</h2>
+                    <p style="color: #7f8c8d; font-size: 0.95rem;">프로젝트 제안이나 궁금하신 점이 있다면 언제든 문의해 주세요.</p>
+                </div>
+                
+                <form action="https://formspree.io/f/mojnlvwj" method="POST" class="contact-form">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div style="display: flex; flex-direction: column; gap: 5px;">
+                            <label for="name">성함 또는 업체명</label>
+                            <input type="text" id="name" name="name" placeholder="홍길동" required>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 5px;">
+                            <label for="email">회신받을 이메일</label>
+                            <input type="email" id="email" name="email" placeholder="example@email.com" required>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 5px; margin-top: 10px;">
+                        <label for="message">문의 내용</label>
+                        <textarea id="message" name="message" placeholder="문의하실 내용을 상세히 적어주시면 빠른 회신이 가능합니다." required></textarea>
+                    </div>
+                    
+                    <button type="submit">문의 보내기</button>
+                    <p style="text-align: center; font-size: 0.8rem; color: #95a5a6; margin-top: 1rem;">
+                        * 보내주신 내용은 담당자 확인 후 순차적으로 답변드립니다.
+                    </p>
+                </form>
+            </section>
         </main>
 
         <footer>
