@@ -41,6 +41,31 @@
             font-weight: bold;
             color: #2980b9;
         }
+        /* 추가된 입력창 스타일 */
+        .add-book-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background-color: #f9f9fb;
+            border: 2px dashed #d1d8e0;
+            border-radius: 8px;
+        }
+        .add-book-form input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .add-book-form button {
+            background-color: #2ecc71;
+            margin: 0;
+            width: 100%;
+        }
+        .add-book-form button:hover {
+            background-color: #27ae60;
+        }
         button {
             display: block;
             margin: 1rem auto 0;
@@ -79,6 +104,13 @@
         </header>
 
         <main>
+            <!-- 책 추가 입력 섹션 -->
+            <section class="add-book-form">
+                <input type="text" id="book-title-input" placeholder="읽은 책 제목을 입력하세요">
+                <input type="date" id="book-date-input">
+                <button id="add-book-btn">기록 추가하기</button>
+            </section>
+
             <div class="summary">
                 <p>총 읽은 책: <span id="total-books">0</span>권</p>
                 <button id="show-list-btn">읽은 책 목록 보기</button>
@@ -96,27 +128,33 @@
 
     <script>
         // --- 데이터 ---
-        // 여기에 읽은 책 정보를 추가하거나 수정하세요.
         const books = [
             { date: '2024-01-15', title: '세이노의 가르침' },
             { date: '2024-02-20', title: '데일 카네기 인간관계론' },
             { date: '2024-04-05', title: '원씽(The One Thing)' },
             { date: '2024-05-10', title: '이방인' }
-            // 예: { date: '2024-06-01', title: '새로 읽은 책' }
         ];
 
         // --- 요소 가져오기 ---
         const totalBooksSpan = document.getElementById('total-books');
         const showListBtn = document.getElementById('show-list-btn');
         const bookListContainer = document.getElementById('book-list-container');
+        
+        const bookTitleInput = document.getElementById('book-title-input');
+        const bookDateInput = document.getElementById('book-date-input');
+        const addBookBtn = document.getElementById('add-book-btn');
+
+        // 초기 설정: 오늘 날짜를 기본값으로 설정
+        bookDateInput.value = new Date().toISOString().substring(0, 10);
 
         // --- 기능 ---
-        // 1. 총 읽은 책 권수 업데이트
-        totalBooksSpan.textContent = books.length;
+        // 1. UI 업데이트 함수
+        function updateUI() {
+            totalBooksSpan.textContent = books.length;
+        }
 
-        // 2. 버튼 클릭 이벤트 리스너
-        showListBtn.addEventListener('click', function() {
-            // 이전에 생성된 목록이 있다면 지웁니다.
+        // 2. 책 목록 렌더링 함수
+        function renderList() {
             bookListContainer.innerHTML = '';
 
             if (books.length === 0) {
@@ -124,19 +162,47 @@
                 return;
             }
 
-            // ul 요소 생성
             const ul = document.createElement('ul');
-
-            // books 배열을 순회하며 li 요소 생성 및 추가
             books.forEach(function(book) {
                 const li = document.createElement('li');
                 li.textContent = `[${book.date}] ${book.title}`;
                 ul.appendChild(li);
             });
-
-            // 완성된 ul을 컨테이너에 추가
             bookListContainer.appendChild(ul);
+        }
+
+        // 3. 책 추가 기능
+        addBookBtn.addEventListener('click', function() {
+            const title = bookTitleInput.value.trim();
+            const date = bookDateInput.value;
+
+            if (!title) {
+                alert('책 제목을 입력해 주세요!');
+                return;
+            }
+
+            // 배열에 추가
+            books.push({ date, title });
+            
+            // 입력창 초기화
+            bookTitleInput.value = '';
+            
+            // UI 업데이트
+            updateUI();
+            
+            // 목록이 이미 펼쳐져 있다면 갱신
+            if (bookListContainer.innerHTML !== '') {
+                renderList();
+            }
+
+            alert('기록이 추가되었습니다!');
         });
+
+        // 4. 목록 보기 버튼 클릭
+        showListBtn.addEventListener('click', renderList);
+
+        // 초기 실행
+        updateUI();
     </script>
 
 </body>
