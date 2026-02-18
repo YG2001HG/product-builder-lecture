@@ -1,15 +1,143 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Product Builder Lecture</title>
-  <link href='/style.css' rel='stylesheet'>
-  <script defer type="module" src="/main.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나의 독서 기록</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 768px;
+            margin: 2rem auto;
+            padding: 1rem 2rem;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        header, footer {
+            text-align: center;
+            padding: 1rem 0;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .summary {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background-color: #ecf0f1;
+            border-radius: 8px;
+        }
+        .summary p {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+        .summary span {
+            font-weight: bold;
+            color: #2980b9;
+        }
+        button {
+            display: block;
+            margin: 1rem auto 0;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #fff;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #book-list-container ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 2rem;
+        }
+        #book-list-container li {
+            background-color: #fdfdfd;
+            border: 1px solid #e0e0e0;
+            margin-bottom: 0.5rem;
+            padding: 1rem;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-  <div id="app">
-    <!-- Write your code here -->
-  </div>
+
+    <div class="container">
+        <header>
+            <h1>나의 독서 기록</h1>
+        </header>
+
+        <main>
+            <div class="summary">
+                <p>총 읽은 책: <span id="total-books">0</span>권</p>
+                <button id="show-list-btn">읽은 책 목록 보기</button>
+            </div>
+            
+            <div id="book-list-container">
+                <!-- 읽은 책 목록이 여기에 표시됩니다. -->
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 나의 독서 기록</p>
+        </footer>
+    </div>
+
+    <script>
+        // --- 데이터 ---
+        // 여기에 읽은 책 정보를 추가하거나 수정하세요.
+        const books = [
+            { date: '2024-01-15', title: '세이노의 가르침' },
+            { date: '2024-02-20', title: '데일 카네기 인간관계론' },
+            { date: '2024-04-05', title: '원씽(The One Thing)' },
+            { date: '2024-05-10', title: '이방인' }
+            // 예: { date: '2024-06-01', title: '새로 읽은 책' }
+        ];
+
+        // --- 요소 가져오기 ---
+        const totalBooksSpan = document.getElementById('total-books');
+        const showListBtn = document.getElementById('show-list-btn');
+        const bookListContainer = document.getElementById('book-list-container');
+
+        // --- 기능 ---
+        // 1. 총 읽은 책 권수 업데이트
+        totalBooksSpan.textContent = books.length;
+
+        // 2. 버튼 클릭 이벤트 리스너
+        showListBtn.addEventListener('click', function() {
+            // 이전에 생성된 목록이 있다면 지웁니다.
+            bookListContainer.innerHTML = '';
+
+            if (books.length === 0) {
+                bookListContainer.innerHTML = '<p style="text-align: center;">아직 기록된 책이 없습니다.</p>';
+                return;
+            }
+
+            // ul 요소 생성
+            const ul = document.createElement('ul');
+
+            // books 배열을 순회하며 li 요소 생성 및 추가
+            books.forEach(function(book) {
+                const li = document.createElement('li');
+                li.textContent = `[${book.date}] ${book.title}`;
+                ul.appendChild(li);
+            });
+
+            // 완성된 ul을 컨테이너에 추가
+            bookListContainer.appendChild(ul);
+        });
+    </script>
+
 </body>
 </html>
