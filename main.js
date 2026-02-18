@@ -1,1 +1,2 @@
-// Add JS here
+// Initialize your app
+console.log('App started!');

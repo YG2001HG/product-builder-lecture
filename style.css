@@ -1,1 +1,14 @@
-/* Add styles here */
+/* Reset and start fresh */
+:root {
+  --primary-color: #3b82f6;
+  --bg-color: #f8fafc;
+  --text-color: #1e293b;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
