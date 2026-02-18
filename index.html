@@ -3,304 +3,300 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>나의 독서 기록</title>
+    <meta name="description" content="나의 독서 기록과 깊이 있는 서평을 공유하는 전문 독서 블로그입니다.">
+    <title>독서의 기록 | 지혜를 쌓는 나만의 공간</title>
+    
+    <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6628656629917577"
      crossorigin="anonymous"></script>
+
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-            line-height: 1.6;
-        }
-        .container {
-            max-width: 768px;
-            margin: 2rem auto;
-            padding: 1rem 2rem;
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        header, footer {
-            text-align: center;
-            padding: 1rem 0;
-        }
-        h1 {
-            color: #2c3e50;
-        }
-        .summary {
-            text-align: center;
-            margin: 2rem 0;
-            padding: 1.5rem;
-            background-color: #ecf0f1;
-            border-radius: 8px;
-        }
-        .summary p {
-            margin: 0;
-            font-size: 1.2rem;
-        }
-        .summary span {
-            font-weight: bold;
-            color: #2980b9;
-        }
-        /* 추가된 입력창 스타일 */
-        .add-book-form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background-color: #f9f9fb;
-            border: 2px dashed #d1d8e0;
-            border-radius: 8px;
-        }
-        .add-book-form input {
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-        .add-book-form button {
-            background-color: #2ecc71;
-            margin: 0;
-            width: 100%;
-        }
-        .add-book-form button:hover {
-            background-color: #27ae60;
-        }
-        button {
-            display: block;
-            margin: 1rem auto 0;
-            padding: 12px 25px;
-            font-size: 1rem;
-            font-weight: bold;
-            color: #fff;
-            background-color: #3498db;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        button:hover {
-            background-color: #2980b9;
-        }
-        #book-list-container ul {
-            list-style-type: none;
-            padding: 0;
-            margin-top: 2rem;
-        }
-        #book-list-container li {
-            background-color: #fdfdfd;
-            border: 1px solid #e0e0e0;
-            margin-bottom: 0.5rem;
-            padding: 1rem;
-            border-radius: 5px;
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --card-bg: #ffffff;
+            --border-radius: 12px;
         }
 
-        /* 제휴 문의 폼 스타일 */
-        .contact-section {
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 2px solid #ecf0f1;
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
         }
-        .contact-form {
+
+        /* Navigation */
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
             display: flex;
-            flex-direction: column;
-            gap: 15px;
-            background-color: #fff;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
         }
-        .contact-form label {
-            font-weight: bold;
-            font-size: 0.9rem;
-            color: #7f8c8d;
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-decoration: none;
         }
-        .contact-form input, .contact-form textarea {
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            margin-left: 1.5rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--accent-color); }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+
+        .container {
+            max-width: 1000px;
+            margin: -3rem auto 4rem;
+            padding: 0 2rem;
+        }
+
+        /* Content Sections */
+        section {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            border-left: 5px solid var(--accent-color);
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        /* Form Styles */
+        .form-group { margin-bottom: 1.5rem; }
+        label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
+        input, textarea {
+            width: 100%;
             padding: 12px;
             border: 1px solid #ddd;
-            border-radius: 5px;
+            border-radius: 8px;
             font-size: 1rem;
-            font-family: inherit;
+            box-sizing: border-box;
         }
-        .contact-form textarea {
-            resize: vertical;
-            min-height: 120px;
+        button {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: transform 0.2s, background 0.3s;
         }
-        .contact-form button[type="submit"] {
-            background-color: #2c3e50;
-            margin: 1rem 0 0 0;
-            width: 100%;
+        button:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
         }
-        .contact-form button[type="submit"]:hover {
-            background-color: #34495e;
+
+        /* Book List Styles */
+        .book-item {
+            border-bottom: 1px solid #eee;
+            padding: 1.5rem 0;
+        }
+        .book-item:last-child { border-bottom: none; }
+        .book-meta { font-size: 0.9rem; color: #888; margin-bottom: 0.5rem; }
+        .book-title { font-size: 1.3rem; font-weight: 700; color: var(--primary-color); }
+        .book-content { margin-top: 1rem; color: #555; }
+
+        /* Footer */
+        footer {
+            background: #f1f3f5;
+            padding: 4rem 2rem;
+            text-align: center;
+            color: #666;
+        }
+        .policy-links a { margin: 0 1rem; color: #888; text-decoration: none; font-size: 0.9rem; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .nav-container { flex-direction: column; gap: 1rem; }
+            .nav-links a { margin: 0 0.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>나의 독서 기록</h1>
-        </header>
-
-        <main>
-            <!-- 책 추가 입력 섹션 -->
-            <section class="add-book-form">
-                <input type="text" id="book-title-input" placeholder="읽은 책 제목을 입력하세요">
-                <input type="date" id="book-date-input">
-                <button id="add-book-btn">기록 추가하기</button>
-            </section>
-
-            <div class="summary">
-                <p>총 읽은 책: <span id="total-books">0</span>권</p>
-                <button id="show-list-btn">읽은 책 목록 보기</button>
-            </div>
-            
-            <div id="book-list-container">
-                <!-- 읽은 책 목록이 여기에 표시됩니다. -->
-            </div>
-
-            <!-- Disqus 댓글 섹션 추가 -->
-            <section class="comments-section" style="margin-top: 4rem; padding-top: 2rem; border-top: 2px solid #ecf0f1;">
-                <h2 style="text-align: center; margin-bottom: 2rem; color: #2c3e50;">💬 독서 감상평 나누기</h2>
-                <div id="disqus_thread"></div>
-                <script>
-                    /**
-                    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-                    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-                    
-                    var disqus_config = function () {
-                        this.page.url = window.location.href;  // 페이지의 전체 URL
-                        this.page.identifier = 'my-reading-log-v1'; // 페이지의 고유 식별자
-                    };
-                    
-                    (function() { // DON'T EDIT BELOW THIS LINE
-                    var d = document, s = d.createElement('script');
-                    s.src = 'https://productbuilder-kwfsd5tmlm.disqus.com/embed.js';
-                    s.setAttribute('data-timestamp', +new Date());
-                    (d.head || d.body).appendChild(s);
-                    })();
-                </script>
-                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-            </section>
-
-            <!-- 제휴 및 서비스 문의 섹션 -->
-            <section class="contact-section">
-                <div style="text-align: center; margin-bottom: 2rem;">
-                    <h2 style="color: #2c3e50; margin-bottom: 0.5rem;">🤝 제휴 및 서비스 문의</h2>
-                    <p style="color: #7f8c8d; font-size: 0.95rem;">프로젝트 제안이나 궁금하신 점이 있다면 언제든 문의해 주세요.</p>
-                </div>
-                
-                <form action="https://formspree.io/f/mojnlvwj" method="POST" class="contact-form">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                        <div style="display: flex; flex-direction: column; gap: 5px;">
-                            <label for="name">성함 또는 업체명</label>
-                            <input type="text" id="name" name="name" placeholder="홍길동" required>
-                        </div>
-                        <div style="display: flex; flex-direction: column; gap: 5px;">
-                            <label for="email">회신받을 이메일</label>
-                            <input type="email" id="email" name="email" placeholder="example@email.com" required>
-                        </div>
-                    </div>
-                    
-                    <div style="display: flex; flex-direction: column; gap: 5px; margin-top: 10px;">
-                        <label for="message">문의 내용</label>
-                        <textarea id="message" name="message" placeholder="문의하실 내용을 상세히 적어주시면 빠른 회신이 가능합니다." required></textarea>
-                    </div>
-                    
-                    <button type="submit">문의 보내기</button>
-                    <p style="text-align: center; font-size: 0.8rem; color: #95a5a6; margin-top: 1rem;">
-                        * 보내주신 내용은 담당자 확인 후 순차적으로 답변드립니다.
-                    </p>
-                </form>
-            </section>
-        </main>
-
-        <footer>
-            <p>&copy; 2024 나의 독서 기록</p>
-        </footer>
+<nav>
+    <div class="nav-container">
+        <a href="#" class="logo">독서의 기록</a>
+        <div class="nav-links">
+            <a href="#about">소개</a>
+            <a href="#records">독서록</a>
+            <a href="#contact">제휴문의</a>
+            <a href="#privacy">개인정보정책</a>
+        </div>
     </div>
+</nav>
 
-    <script>
-        // --- 데이터 ---
-        const books = [
-            { date: '2024-01-15', title: '세이노의 가르침' },
-            { date: '2024-02-20', title: '데일 카네기 인간관계론' },
-            { date: '2024-04-05', title: '원씽(The One Thing)' },
-            { date: '2024-05-10', title: '이방인' }
-        ];
+<header class="hero">
+    <h1>지혜의 숲에서 길을 찾다</h1>
+    <p>한 권의 책이 세상을 바꾸지는 못해도, 한 사람의 생각은 바꿀 수 있습니다. 매일 읽고 기록하는 성장의 기록장입니다.</p>
+</header>
 
-        // --- 요소 가져오기 ---
-        const totalBooksSpan = document.getElementById('total-books');
-        const showListBtn = document.getElementById('show-list-btn');
-        const bookListContainer = document.getElementById('book-list-container');
+<div class="container">
+    <!-- 소개 섹션 (AdSense 최적화용) -->
+    <section id="about">
+        <h2>블로그 소개</h2>
+        <p>안녕하세요! <strong>'독서의 기록'</strong>은 매일 한 장의 페이지를 넘기며 얻은 영감과 통찰을 기록하는 전문 서평 블로그입니다. 경제, 자기계발, 인문학 등 다양한 장르의 도서를 깊이 있게 분석하고, 실생활에 적용할 수 있는 인사이트를 공유합니다. 독서를 통해 더 나은 내일을 꿈꾸는 모든 분들과 소통하고자 합니다.</p>
+    </section>
+
+    <!-- 책 추가 섹션 -->
+    <section id="add-record">
+        <h2>새로운 독서 기록 남기기</h2>
+        <div class="form-group">
+            <label for="book-title">책 제목</label>
+            <input type="text" id="book-title" placeholder="예: 데일 카네기 인간관계론">
+        </div>
+        <div class="form-group">
+            <label for="book-date">읽은 날짜</label>
+            <input type="date" id="book-date">
+        </div>
+        <div class="form-group">
+            <label for="book-review">서평 및 인사이트 (텍스트 양이 많을수록 애드센스 승인에 유리합니다)</label>
+            <textarea id="book-review" placeholder="책을 통해 느낀 점과 핵심 내용을 상세히 기록해 주세요. (최소 300자 이상 권장)"></textarea>
+        </div>
+        <button id="add-btn">독서 기록 저장하기</button>
+    </section>
+
+    <!-- 독서 목록 섹션 -->
+    <section id="records">
+        <h2>최근 독서 기록 <span id="count" style="font-size: 1rem; color: var(--accent-color);">(0)</span></h2>
+        <div id="list">
+            <!-- 목록이 여기에 렌더링됩니다 -->
+        </div>
+    </section>
+
+    <!-- 댓글 섹션 -->
+    <section>
+        <h2>💬 독자 커뮤니티</h2>
+        <div id="disqus_thread"></div>
+    </section>
+
+    <!-- 제휴 문의 -->
+    <section id="contact">
+        <h2>🤝 제휴 및 서비스 문의</h2>
+        <form action="https://formspree.io/f/mojnlvwj" method="POST" class="contact-form">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <input type="text" name="name" placeholder="성함/업체명" required>
+                <input type="email" name="email" placeholder="이메일 주소" required>
+            </div>
+            <textarea name="message" style="margin-top: 15px;" placeholder="문의하실 내용을 입력해 주세요." required></textarea>
+            <button type="submit" style="margin-top: 15px; width: 100%; background: var(--primary-color);">문의 메시지 보내기</button>
+        </form>
+    </section>
+
+    <!-- 개인정보처리방침 (애드센스 필수!) -->
+    <section id="privacy">
+        <h2>개인정보처리방침</h2>
+        <p style="font-size: 0.9rem; color: #666;">본 사이트는 사용자의 활동 기록을 브라우저 로컬 저장소에 저장하며, 외부로 무단 유출하지 않습니다. 구글 애드센스 광고를 통해 맞춤형 광고를 제공할 수 있으며, 이에 따른 쿠키 사용이 발생할 수 있습니다.</p>
+    </section>
+</div>
+
+<footer>
+    <div class="policy-links">
+        <a href="#about">소개</a> | <a href="#privacy">개인정보처리방침</a> | <a href="#contact">문의하기</a>
+    </div>
+    <p style="margin-top: 2rem;">&copy; 2024 독서의 기록. All rights reserved.</p>
+</footer>
+
+<script>
+    // --- 데이터 관리 ---
+    let books = JSON.parse(localStorage.getItem('my_books')) || [
+        { date: '2024-05-10', title: '이방인', review: '실존주의의 정수를 보여주는 알베르 카뮈의 걸작입니다. 부조리한 세상 속에서 개인이 가질 수 있는 태도에 대해 깊이 고민하게 만듭니다.' },
+        { date: '2024-04-05', title: '원씽(The One Thing)', review: '복잡한 세상에서 단 하나의 핵심에 집중하는 힘을 알려주는 책입니다. 생산성을 높이고 싶은 분들에게 강력 추천합니다.' }
+    ];
+
+    const listEl = document.getElementById('list');
+    const countEl = document.getElementById('count');
+    const titleInput = document.getElementById('book-title');
+    const dateInput = document.getElementById('book-date');
+    const reviewInput = document.getElementById('book-review');
+    const addBtn = document.getElementById('add-btn');
+
+    // 초기 날짜 설정
+    dateInput.value = new Date().toISOString().substring(0, 10);
+
+    function render() {
+        listEl.innerHTML = '';
+        countEl.textContent = `(${books.length})`;
         
-        const bookTitleInput = document.getElementById('book-title-input');
-        const bookDateInput = document.getElementById('book-date-input');
-        const addBookBtn = document.getElementById('add-book-btn');
-
-        // 초기 설정: 오늘 날짜를 기본값으로 설정
-        bookDateInput.value = new Date().toISOString().substring(0, 10);
-
-        // --- 기능 ---
-        // 1. UI 업데이트 함수
-        function updateUI() {
-            totalBooksSpan.textContent = books.length;
-        }
-
-        // 2. 책 목록 렌더링 함수
-        function renderList() {
-            bookListContainer.innerHTML = '';
-
-            if (books.length === 0) {
-                bookListContainer.innerHTML = '<p style="text-align: center;">아직 기록된 책이 없습니다.</p>';
-                return;
-            }
-
-            const ul = document.createElement('ul');
-            books.forEach(function(book) {
-                const li = document.createElement('li');
-                li.textContent = `[${book.date}] ${book.title}`;
-                ul.appendChild(li);
-            });
-            bookListContainer.appendChild(ul);
-        }
-
-        // 3. 책 추가 기능
-        addBookBtn.addEventListener('click', function() {
-            const title = bookTitleInput.value.trim();
-            const date = bookDateInput.value;
-
-            if (!title) {
-                alert('책 제목을 입력해 주세요!');
-                return;
-            }
-
-            // 배열에 추가
-            books.push({ date, title });
-            
-            // 입력창 초기화
-            bookTitleInput.value = '';
-            
-            // UI 업데이트
-            updateUI();
-            
-            // 목록이 이미 펼쳐져 있다면 갱신
-            if (bookListContainer.innerHTML !== '') {
-                renderList();
-            }
-
-            alert('기록이 추가되었습니다!');
+        books.forEach((book, index) => {
+            const div = document.createElement('div');
+            div.className = 'book-item';
+            div.innerHTML = `
+                <div class="book-meta">${book.date} | 전문 서평</div>
+                <div class="book-title">${book.title}</div>
+                <div class="book-content">${book.review}</div>
+            `;
+            listEl.appendChild(div);
         });
+        localStorage.setItem('my_books', JSON.stringify(books));
+    }
 
-        // 4. 목록 보기 버튼 클릭
-        showListBtn.addEventListener('click', renderList);
+    addBtn.addEventListener('click', () => {
+        const title = titleInput.value.trim();
+        const date = dateInput.value;
+        const review = reviewInput.value.trim();
 
-        // 초기 실행
-        updateUI();
-    </script>
+        if(!title || !review) {
+            alert('제목과 서평 내용을 충분히 입력해 주세요!');
+            return;
+        }
+
+        books.unshift({ title, date, review });
+        titleInput.value = '';
+        reviewInput.value = '';
+        render();
+        alert('소중한 독서 기록이 저장되었습니다.');
+    });
+
+    // Disqus
+    var disqus_config = function () {
+        this.page.url = window.location.href;
+        this.page.identifier = 'my-reading-log-v2';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://productbuilder-kwfsd5tmlm.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+
+    render();
+</script>
 
 </body>
 </html>
